@@ -1,0 +1,96 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+
+ html {
+    box-sizing: border-box;
+    margin: 0;
+}
+*,
+*:before,
+*:after {
+    box-sizing: inherit;
+}
+
+nav{
+    display: flex;
+    align-items: center;
+    background-color: rgb(243, 161, 223);
+    padding: 2em;
+    background :linear-gradient(#05FBFF, rgb(58, 35, 235));              
+    position: relative;
+    flex-wrap: wrap;
+}
+nav >:last-child {
+    margin-left: auto;
+  }
+.nav-container{
+    display: flex;
+    flex-direction: column;
+    padding: 1em;
+    margin-bottom: 0;
+}
+.link{
+    padding: 0.5em;
+    text-decoration: none;
+    color: rgb(236, 162, 49);
+    text-shadow: 1px 1px 0 #000
+}
+.link:hover{
+    color: yellow;
+}
+.name{
+    padding: 0.5em;
+    text-decoration: none;
+    color: rgb(30, 3, 184);
+    text-shadow: 1px 1px 0 yellow;
+    font-size: larger;
+    font-weight: bolder;
+}
+.box{
+    display: flex;
+    flex-direction: column;
+}
+.container{
+    margin: 3em 4em;
+}
+.liked{
+    text-decoration: none;
+    color: palevioletred;
+}
+.button{
+    padding: 0.5em;
+    border: 1px solid blue;
+    border-radius: 5px;
+    box-shadow:  1.5px 2px gray;
+    margin: 2em 1em;
+    font-weight: bolder;
+}
+
+.idea {
+    border-top: 1px blue solid;
+}
+.link2{
+    padding: 0.5em;
+    text-decoration: none;
+    color: rgb(236, 162, 49);
+    text-shadow: 1px 1px 0 #000;
+    border: 1px solid blue;
+    border-radius: 5px;
+    box-shadow:  1.5px 2px gray;
+    margin-top: 2em;
+    text-align: center;
+}
+

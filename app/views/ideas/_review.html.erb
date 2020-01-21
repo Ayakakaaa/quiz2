@@ -1,0 +1,44 @@
+
+<h1>Reviews</h1>
+
+<%= form_with(model: [@idea, @new_review], local: true) do |f| %>
+    <% if @new_review.errors.present? %>
+        <p class="form-errors">
+            <%= @new_review.errors.full_messages.join(", ") %>
+        </p>
+    <% end %>
+    <div class="form-group">
+        <%= f.text_area(
+            :body,
+            cols: 50,
+            rows: 3,
+            placeholder:"What are your thoughts?",
+            class: "form-control"
+        ) %>
+    </div>
+
+    <%= f.submit 'review', :class => 'button' %>
+<% end %>
+<hr>
+<ul class="review-list">
+    <% @reviews.each do |review| %>
+        <li>
+            <%= review.body %> <br>
+            <% if can? :crud, review %>
+                <small>
+                    <%= link_to(
+                        "Delete",
+                        idea_review_path(@idea,review),
+                        method: :delete,
+                        data:{
+                            confirm: "Are you sure?"
+                        }
+                    ) %>
+                </small>
+            <% end %>
+            <small>
+                reviewed <%= time_ago_in_words(review.created_at) %> ago 
+            </small>
+        </li>
+    <% end %>
+</ul>

@@ -1,0 +1,23 @@
+<hr>
+<ul class="review-list">
+    <% @reviews.each do |review| %>
+        <li>
+            <%= review.body %> <br>
+            <% if can? :crud, review %>
+                <small>
+                    <%= link_to(
+                        "Delete",
+                        idea_review_path(@idea,review),
+                        method: :delete,
+                        data:{
+                            confirm: "Are you sure?"
+                        }
+                    ) %>
+                </small>
+            <% end %>
+            <small>
+                reviewed <%= time_ago_in_words(review.created_at) %> ago 
+            </small>
+        </li>
+    <% end %>
+</ul>

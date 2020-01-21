@@ -1,0 +1,19 @@
+<h1>Reviews</h1>
+<%= form_with(model: [@idea, @new_review], local: true) do |f| %>
+    <% if @new_review.errors.present? %>
+        <p class="form-errors">
+            <%= @new_review.errors.full_messages.join(", ") %>
+        </p>
+    <% end %>
+    <div class="form-group">
+        <%= f.text_area(
+            :body,
+            cols: 50,
+            rows: 3,
+            placeholder:"What are your thoughts?",
+            class: "form-control"
+        ) %>
+    </div>
+
+    <%= f.submit 'review', :class => 'button' %>
+<% end %>

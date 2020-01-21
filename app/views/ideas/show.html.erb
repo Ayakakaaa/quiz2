@@ -1,0 +1,17 @@
+<div class="container">
+    <h1><%= @idea.title %></h1>
+    <p><%= @idea.description %></p>
+    <p>Created <%= time_ago_in_words(@idea.created_at) %> ago</p>
+
+    <% if can? :update, @idea %>
+        <%= link_to 'Edit', edit_idea_path(@idea.id), class: "button"%>
+    <% end %>
+    <% if can? :destroy, @idea %>
+            <%= link_to("Delete", idea_path(@idea), method: :delete, data:{confirm:'Are you sure?' }, class: "button") %>
+    <% end %>
+
+    <%= render 'like', like: @like, idea: @idea%>
+
+    <%= render 'reviews/new'%>
+    <%= render 'reviews/index'%>
+</div>

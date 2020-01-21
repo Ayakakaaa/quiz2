@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Quiz2</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag 'application', media: 'all' %>
+    <%= javascript_pack_tag 'application' %>
+  </head>
+
+  <body>
+    <nav>
+      <div class = "box">
+        <%= link_to image_tag('factory.png',width: '85px', height: '85px'), ideas_path%>
+      <small style= "margin-left: 0.7em;">Idea Factory</small>
+      </div>
+      <div class="nav-container">
+        <div class = "box2">
+        <% if user_signed_in? %>
+            Hello! <span class="name"><%= current_user.name %></span>
+            <%= link_to "Sign Out", session_path, method: :delete, class: "link",
+              data: {confirm: "Are you sure you want to log out?"} %>
+          <% else %>
+            <%= link_to "Login", new_session_path, class: "link" %> 
+            <%= link_to "Sign Up", new_user_path, class: "link" %>
+          <% end %>
+        </div>
+        <%=link_to 'New Idea', new_idea_path, class: "link2" %>
+      </div>
+    </nav>
+
+    <hr>
+
+    <p>
+    <% flash.each do |type, message| %>
+      <div class="flash flash-<%= type %>">
+        <%= message %>
+      </div>
+    <% end %>
+    </p>
+    <%= yield %>
+  </body>
+</html>
